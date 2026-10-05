@@ -2,7 +2,8 @@
 
 **Course:** 83-612 – Digital VLSI Design, Bar-Ilan University
 **Year:** 2026–27
-**In-lab exam:** this homework is graded by an in-lab exam. **You must push your submission before the lab session starts** — if it is not in your branch when the session begins, you cannot take the exam. Exam dates are in the course syllabus (`#important-resources` channel, DVD2026-27 Discord); late exams lose 5 points per week, up to 3 weeks. See [HW0 – Homework rules](https://github.com/DVD2027/hw0#3-homework-rules-all-assignments).
+**Weight:** 10% of the homework grade · **Deadline:** Saturday 23:59 of the submission week (see the syllabus timeline in `#important-resources` on the DVD2026-27 Discord) · **Submitted in pairs** — branch name = the representative's ID.  
+**Grading:** 20% automatic grader at the deadline + 80% in-lab evaluation in the following lab. **You can only be evaluated if your homework was pushed before that lab session starts**; every week of delay costs 5 points off this assignment's grade. See [HW0 – Homework rules](https://github.com/DVD2027/hw0#3-homework-rules-all-assignments).
 
 In this exercise you write a Tcl script that (1) generates random numbers and computes per-run averages, and (2) parses that output to produce a sorted summary. Tcl is the shell language of almost every EDA tool, and every later assignment relies on it. The exercise is intentionally simple — follow the instructions; the goal is to learn the language, not to solve a hard problem.
 
@@ -278,7 +279,7 @@ Run Number    Average       Maximum
 1             40117.5       67890
 ```
 
-> **You MUST format both output files EXACTLY as shown** (with your own name and ID in the header line).
+> **You MUST format both output files EXACTLY as shown** (with **both partners' names and IDs** in the header line).
 
 ## B.3 What to submit
 
@@ -308,5 +309,5 @@ git push origin <ID_NUMBER>
 - [ ] The random generator is **seeded with my ID**.
 - [ ] N, M and the values are within the required ranges.
 - [ ] Part 2 reads its data by **parsing the `.part1` file**.
-- [ ] Both output files match the format **exactly**, with my name and ID in the header.
-- [ ] My branch name is **exactly** my ID number, and I pushed to `origin <ID_NUMBER>` (never to `main`).
+- [ ] Both output files match the format **exactly**, with both partners' names and IDs in the header.
+- [ ] Our branch name is **exactly** the representative's ID (the same ID used for the seed), and we pushed to `origin <ID_NUMBER>` (never to `main`) before the deadline.
