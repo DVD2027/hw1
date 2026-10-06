@@ -280,6 +280,7 @@ Run Number    Average       Maximum
 ```
 
 > **You MUST format both output files EXACTLY as shown** (with **both partners' names and IDs** in the header line).
+> This includes how numbers are printed: compare your output to the examples above character by character, with your real ID-sized values (not only small test numbers). **The automatic grader checks your files against this format — any difference fails its checks.**
 
 ## B.3 What to submit
 
