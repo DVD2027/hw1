@@ -298,6 +298,9 @@ mkdir -p DVD && cd DVD
 git clone git@github.com:DVD2027/hw1.git
 cd hw1
 git checkout v1.0 -b <ID_NUMBER>
+ls                       # you should see example.tcl — proof you are on your v1.0-based branch
+tclsh example.tcl        # optional warm-up: a few Part A basics in action
+git rm example.tcl       # remove it before you start your own solution
 # ... write and run your script: tclsh ID-HW1.tcl ...
 git add ID-HW1.tcl <ID_NUMBER>.part1 <ID_NUMBER>.part2
 git commit -m "HW1 solution"
