@@ -1,10 +1,10 @@
-# Setup variables
+
 set ID "208537415"
 set header "# EX_1 Idan Itzhaki $ID"
 set file1 "${ID}.part1"
 set file2 "${ID}.part2"
 
-# Seed the pseudo-random generator with your ID
+# pseudo-random generator with my ID number
 expr { srand($ID) }
 
 #  Calculate running averages
@@ -36,7 +36,7 @@ for {set i 1} {$i <= $N} {incr i} {
     puts $fh1 "Average = [format "%.1f" $avg]" 
     # single decimal precision (.lf)
     
-    # Add an empty line between runs, but not after the very last run
+    # Adding an empty line between runs but not after the very last run
     if {$i < $N} {
         puts $fh1 ""
     }
@@ -45,7 +45,7 @@ close $fh1
 
 
 
-# Part 2: Parse and analyze the file
+# file part 2
 
 set fh1 [open $file1 r]
 set runs_data {}
@@ -53,22 +53,22 @@ set runs_data {}
 set current_run ""
 set current_max -1
 
-# Parse the part1 file line by line
+# parse the part1 file line by line
 while {[gets $fh1 line] >= 0} {
     set line [string trim $line]
     
-    # Match run number
+    # match run number
     if {[regexp {^Run Number:\s+(\d+)} $line match run_num]} {
         set current_run $run_num
         set current_max -1
         
-    # Match standalone numbers (the M random values)
+    # match standalone numbers (the M random values)
     } elseif {[regexp {^\d+$} $line]} {
         if {$current_max == -1 || $line > $current_max} {
             set current_max $line
         }
         
-    # Match average
+    # match average
     } elseif {[regexp {^Average\s*=\s*([0-9\.]+)} $line match avg_val]} {
         # Store as a list: {run_number average maximum}
         lappend runs_data [list $current_run $avg_val $current_max]
@@ -76,10 +76,10 @@ while {[gets $fh1 line] >= 0} {
 }
 close $fh1
 
-# Sort the data by average (index 1), ascending as a real number
+# sorting the data by average (index 1) and ascending as a real number
 set sorted_runs [lsort -real -index 1 $runs_data]
 
-# Write to part2 formatted exactly like the example
+# writiing the file part2 which formatted exactly like the example
 set fh2 [open $file2 w]
 puts $fh2 $header
 puts $fh2 [format "%-14s%-14s%s" "Run Number" "Average" "Maximum"]
