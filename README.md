@@ -2,7 +2,7 @@
 
 **Course:** 83-612 – Digital VLSI Design, Bar-Ilan University
 **Year:** 2026–27
-**Weight:** 10% of the homework grade · **Deadline:** Saturday 23:59 of the submission week (see the syllabus timeline in `#important-resources` on the DVD2026-27 Discord) · **Submitted in pairs** — branch name = the representative's ID.  
+**Weight:** 10% of the homework grade · **Deadline:** Sunday 23:59 of the submission week (see the syllabus timeline in `#important-resources` on the DVD2026-27 Discord) · **Submitted in pairs** — branch name = the representative's ID.  
 **Grading:** 20% automatic grader at the deadline + 80% in-lab evaluation in the following lab. **You can only be evaluated if your homework was pushed before that lab session starts**; every week of delay costs 5 points off this assignment's grade. See [HW0 – Homework rules](https://github.com/DVD2027/hw0#3-homework-rules-all-assignments).
 
 In this exercise you write a Tcl script that (1) generates random numbers and computes per-run averages, and (2) parses that output to produce a sorted summary. Tcl is the shell language of almost every EDA tool, and every later assignment relies on it. The exercise is intentionally simple — follow the instructions; the goal is to learn the language, not to solve a hard problem.
