@@ -1,4 +1,4 @@
-# HW1 — The Tool Command Language (Tcl)
+# HW1 — The Tool Command Language (Tcl) koren
 
 **Course:** 83-612 – Digital VLSI Design, Bar-Ilan University
 **Year:** 2026–27
