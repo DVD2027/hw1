@@ -8,13 +8,12 @@ expr {srand($ID)}
 
 # Generate number of runs
 set N [expr {int(rand() * 11) + 10}]
-puts "N = $N"
 
 set filename "$ID.part1"
 set fh [open $filename w]
 
 # Write header
-puts $fh "# EX_1 May Menaged 314778333, Elishama Seri <PARTNER_ID>"
+puts $fh "# EX_1 May Menaged 314778333 Elishama Seri 324232560"
 puts $fh "Number of runs: N = $N"
 
 
@@ -71,7 +70,7 @@ set sorted_results [lsort -real -index 1 $results]
 set output_file "$ID.part2"
 set out [open $output_file w]
 
-puts $out "# EX_1 May Menaged 314778333, Elishama Seri "
+puts $out "# EX_1 May Menaged 314778333 Elishama Seri 324232560"
 puts $out "Run Number    Average       Maximum"
 puts $out "------------  -------       -------"
 foreach result $sorted_results {
