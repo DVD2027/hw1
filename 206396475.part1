@@ -1,0 +1,16 @@
+expr { srand(206396475) }
+set N [expr {int(rand()*11)} + 10]
+puts "Number of runs: N = $N"
+for { set i 0 } { $i < $N } { incr i } {
+    puts "Run Number: [expr $i+1]"
+    puts "-------------"
+    set M [expr {int(rand()*26)} + 5]
+    puts "M = $M"
+    set sum 0
+    for { set j 0 } { $j < $M } { incr j } {
+        set current [expr {int(rand()*(206396475+1))}]
+        puts $current
+        incr sum $current
+    }
+    puts "Average = [format {%0.1f} [expr double($sum)/$M]]\n"
+ }
