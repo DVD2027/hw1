@@ -1,9 +1,3 @@
-#this is hw1 
-#shevah cohen 330667064
-#emily benyaminov 325541514
-
-
-
 #first part, (also known as part B.1)
 # <------------------------------------->
 set fp1 [open "325541514.part1" w]     ;# opening the file for writing (delite previos file).
