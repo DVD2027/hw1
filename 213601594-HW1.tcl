@@ -12,7 +12,7 @@ expr {srand($ID)}
 set N [expr {int(rand() * 11) + 10}]
 set filename "$ID.part1"
 set fh [open $filename w]
-puts $fh "# EX_1 RAZI ZOABI 213601594"
+puts $fh "# EX_1 RAZI ZOABI 213601594 Yosef Shekh Yosef 322673591"
 puts $fh "Number of runs: N = $N"
 
 for {set run 1} {$run <= $N} {incr run} {
@@ -31,7 +31,7 @@ for {set run 1} {$run <= $N} {incr run} {
         set sum [expr {$sum + $num}]
     }
 
-    set average [expr {double($sum) / $M}]
+    set average [format "%.1f" [expr {double($sum) / $M}]]
     puts $fh "Average = $average"
     puts $fh ""
 }
@@ -64,14 +64,14 @@ set sortedResults [lsort -real -index 1 $results]
 
 set outputFile [open "$ID.part2" w]
 
-puts $outputFile "# EX_1 RAZI ZOABI 213601594"
-puts $outputFile [format "%-13s%-22s%s" "Run Number" "Average" "Maximum"]
-puts $outputFile [format "%-13s%-22s%s" "----------" "-------" "-------"]
+puts $outputFile "# EX_1 RAZI ZOABI 213601594 Yosef Shekh Yosef 322673591"
+puts $outputFile [format "%-14s%-14s%s" "Run Number" "Average" "Maximum"]
+puts $outputFile [format "%-14s%-14s%s" "----------" "-------" "-------"]
 foreach result $sortedResults {
     set runNumber [lindex $result 0]
     set average [lindex $result 1]
     set maximum [lindex $result 2]
 
-   puts $outputFile [format "%-13s%-22s%s" $runNumber $average $maximum]}
-
+   puts $outputFile [format "%-14s%-14s%s" $runNumber $average $maximum]
+   }
 close $outputFile
