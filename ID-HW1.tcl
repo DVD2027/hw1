@@ -42,7 +42,6 @@ for {set run 1} {$run <= $N} {incr run} {
     # Calculate average
     set average [expr {double($sum) / $M}]
 
-    puts $fh ""
     puts $fh "Average = [format %.1f $average]"
 
     if {$run < $N} {
