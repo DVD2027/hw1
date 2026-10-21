@@ -11,7 +11,7 @@ puts $fh "Number of runs: N = $N"
 
 for { set i 1 } { $i <= $N } { incr i } {
     puts $fh "Run Number: $i"
-    puts $fh "------------"
+    puts $fh "-------------"
     
     set M [expr { int(rand() * 26) + 5 }]
     puts $fh "M = $M"
