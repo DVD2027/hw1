@@ -1,5 +1,5 @@
 set part1 [open "206396475.part1" w]
-puts $part1 "# EX_1 Ofir Adler 206396475, Adi Kastenovich 325710192"
+puts $part1 "# EX_1 Ofir Adler 206396475 Adi Kastenovich 325710192"
 expr { srand(206396475) }
 set N [expr {int(rand()*11)} + 10]
 puts $part1 "Number of runs: N = $N"
@@ -40,7 +40,7 @@ while {[gets $part1 line] >=0} {
 }
 set mainList [lsort -real -index 1 $mainList]
 
-puts $part2 "# EX_1 Ofir Adler 206396475, Adi Kastenovich 325710192"
+puts $part2 "# EX_1 Ofir Adler 206396475 Adi Kastenovich 325710192"
 puts $part2 [format {%-14s%-14s%s} "Run Number" "Average" "Maximum"]
 puts $part2 [format {%-14s%-14s%s} "------------" "-------" "-------"]
 foreach lil_list $mainList {
