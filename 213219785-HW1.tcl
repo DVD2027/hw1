@@ -40,7 +40,7 @@ set table {}
 
 while { [gets $fh1 line] >= 0 } { ;# read line by line
     set vec {}
-    if {[regexp {^Run number: (\d+)} $line -> run_num]} {
+    if {[regexp {^Run Number: (\d+)} $line -> run_num]} {
         lappend vec $run_num        ;#vec[0] is run-number
         gets $fh1;       ;#skip 1 line - the dashes
         gets $fh1 line
