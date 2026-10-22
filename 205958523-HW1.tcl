@@ -6,7 +6,7 @@ set studentname "Ben Moran"
 set studentid "205958523"
 
 set student2name "Eliel Hadad"
-set student2id "212998317"
+set student2id "212998371"
 
 set bothstudents "$studentname $studentid $student2name $student2id"
 
