@@ -5,13 +5,18 @@
 set studentname "Ben Moran"
 set studentid "205958523"
 
+set student2name "Eliel Hadad"
+set student2id "212998317"
+
+set bothstudents "$studentname $studentid $student2name $student2id"
+
 expr { srand($studentid) }
 
 set filename "${studentid}.part1"
 set file [open $filename "w"]
 
 # Write the identifying header and choose how many runs to generate.
-puts $file "# EX_1 $studentname $studentid"
+puts $file "# EX_1 $bothstudents"
 
 set N [expr {int(rand() * 11) + 10}]
 
@@ -45,6 +50,8 @@ for {set i 1} {$i <= $N} {incr i} {
 
 close $file
 
+
+
 # =============================================================================
 # B.2 Part 2: Parse the generated file and report each run's statistics.
 # =============================================================================
@@ -74,7 +81,6 @@ while {[gets $input_file line] >= 0} {
     if {[regexp {^Run number:\s*(\d+)} $trimmed -> r_num]} {
         set current_run_number $r_num
         set current_max ""
-        puts -nonewline "Run number: $current_run_number\n"
         set in_run_section 0
         continue
     }
@@ -87,7 +93,6 @@ while {[gets $input_file line] >= 0} {
 
     # Skip the value-count line; it is not part of the run's data.
     if {[regexp {^M\s*= } $trimmed]} {
-        puts -nonewline "M line: $trimmed\n"
         continue
     }
 
@@ -98,7 +103,6 @@ while {[gets $input_file line] >= 0} {
             set current_max $val
         }
 
-        puts -nonewline "Current max: $current_max\n"
         continue
     }
 
@@ -126,6 +130,7 @@ foreach run $sorted_runs {
     set run_number [lindex $run 0]
     set average [lindex $run 1]
     set maximum [lindex $run 2]
+
     # Keep the columns aligned in the output file.
     puts $out_file [format "%-12s  %-12s  %-12s" $run_number $average $maximum]
 }
