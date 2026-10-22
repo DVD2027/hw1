@@ -48,13 +48,17 @@ close $out1
 # ---------------- Part 2 ----------------
 
 # Parse the .part1 file from disk; do not reuse Part 1 in-memory values.
+# Open the Part 1 output file in read mode.
 set in1 [open $part1_file r]
 set runs {}
 set current_run ""
 set current_max ""
 
+# Read the input file line by line until the end of the file.
 while {[gets $in1 line] >= 0} {
-    if {[regexp {^Run Number: ([0-9]+)$} $line -> run_number]} {
+    # Check if the line starts a new run and extract its run number.
+    # ^-start of line, [0-9]+-one or more digits, $-end of line (...)- stored in run_number 
+    if {[regexp {^Run Number: ([0-9]+)$} $line not_needed run_number]} {
         set current_run $run_number
         set current_max ""
     } elseif {[regexp {^[0-9]+$} $line]} {
@@ -62,22 +66,24 @@ while {[gets $in1 line] >= 0} {
         if {$current_max eq "" || $number > $current_max} {
             set current_max $number
         }
-    } elseif {[regexp {^Average = (.+)$} $line -> average]} {
+    } elseif {[regexp {^Average = (.+)$} $line not_needed average]} {
         lappend runs [list $average $current_run $current_max]
     }
 }
 
 close $in1
 
-# Sort numerically by the first element in each sub-list: the average.
+# Sort the runs in ascending numerical order by their averages (index 0).
+#-real:sorts numerically as real numbers -index0: sort according to first member of each sublist
 set runs [lsort -real -index 0 $runs]
 
 set out2 [open $part2_file w]
 puts $out2 $header
 puts $out2 [format "%-14s%-14s%s" "Run Number" "Average" "Maximum"]
 puts $out2 [format "%-14s%-14s%s" "------------" "-------" "-------"]
-
+ 
 foreach run_data $runs {
+# lindex - returns the element of a list at the specified index.
     set average [lindex $run_data 0]
     set run_number [lindex $run_data 1]
     set maximum [lindex $run_data 2]
