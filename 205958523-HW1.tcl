@@ -45,9 +45,6 @@ for {set i 1} {$i <= $N} {incr i} {
 
 close $file
 
-puts "File $filename created successfully."
-
-
 # =============================================================================
 # B.2 Part 2: Parse the generated file and report each run's statistics.
 # =============================================================================
@@ -134,5 +131,3 @@ foreach run $sorted_runs {
 }
 
 close $out_file
-
-puts "File $output_file_name created successfully."
