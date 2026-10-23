@@ -27,3 +27,27 @@ for { set r 1 } { $r <= $N } { incr r } {
 }
 close $fh
 
+
+# ---------- Part 2 ----------
+set results {}
+set fh [open "${id}.part1" r]
+while { [gets $fh line] >= 0 } {
+    if { [regexp {^Run Number: (\d+)$} $line -> run] } {
+        set max -1
+    } elseif { [regexp {^(\d+)$} $line -> num] } {
+        if { $num > $max } { set max $num }
+    } elseif { [regexp {^Average = (\S+)$} $line -> avg] } {
+        lappend results [list $run $avg $max]
+    }
+}
+close $fh
+set sorted [lsort -real -index 1 $results]
+
+set fh [open "${id}.part2" w]
+puts $fh $header
+puts $fh [format {%-14s%-14s%s} "Run Number" "Average" "Maximum"]
+puts $fh [format {%-14s%-14s%s} "------------" "-------" "-------"]
+foreach item $sorted {
+    puts $fh [format {%-14s%-14s%s} [lindex $item 0] [lindex $item 1] [lindex $item 2]]
+}
+close $fh
