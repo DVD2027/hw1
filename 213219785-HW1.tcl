@@ -19,7 +19,7 @@ for {set i 1} {$i<=$N} {incr i} {       ;#i for 1 to N including, so i is exactl
     puts $fh1 "M = $M"
 
     for {set j 0} {$j<$M} {incr j} {
-        set numRand [expr {int(rand()*213219785)+1}]    ;#random numbers 0-ID (inclusive)
+        set numRand [expr {int(rand()*213219786)}]    ;#random numbers 0-ID (inclusive)
         puts $fh1 $numRand
         set sum [expr {$sum+$numRand}]      ;#update sum
     }
