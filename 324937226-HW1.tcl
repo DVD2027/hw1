@@ -26,7 +26,7 @@ set M [expr {5 + int(rand() * 26)}]
     }
 
     set average [expr {double($sum) / $M}]
-    puts $fh "Average = $average"
+    puts $fh [format "Average = %.1f" $average] 
     puts $fh ""
 }
 close $fh
