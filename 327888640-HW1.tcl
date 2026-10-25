@@ -5,7 +5,7 @@ set fileId [open $filename1 w]
 
 expr { srand(327888640) }
 
-puts $fileId "# EX_1 Gil Rozen 327888640"
+puts $fileId "# EX_1 Gil Rozen 327888640 Dvir Gamliel 321427544"
 
 set N [expr {int(rand() * 11) + 10}]
 puts $fileId "Number of runs: N = $N"
@@ -68,7 +68,7 @@ set sorted_runs [lsort -real -index 1 $all_runs]
 
 set file2 [open $filename2 w]
 
-puts $file2 "# EX_1 Gil Rozen 327888640"
+puts $file2 "# EX_1 Gil Rozen 327888640 Dvir Gamliel 321427544"
 puts $file2 [format "%-14s%-14s%s" "Run Number" "Average" "Maximum"]
 puts $file2 [format "%-14s%-14s%s" "------------" "-------" "-------"]
 
