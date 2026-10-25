@@ -1,5 +1,4 @@
 # HW1 - Tcl: random values and parsing
-# Replace these example details with your pair's actual details.
 set representativeName "BeatriceSuhoy"
 set representativeID "315941120"
 set partnerName "TommyLevi"
@@ -18,6 +17,7 @@ scan $representativeID %d numericID
 expr {srand($numericID)}
 
 # PART 1: Write random runs and their averages.
+	# rand rives R number
 set N [expr {10 + int(rand() * 11)}]
 set out [open $part1Filename w]
 puts $out $heading
