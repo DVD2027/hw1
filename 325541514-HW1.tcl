@@ -1,13 +1,14 @@
 #first part, (also known as part B.1)
 # <------------------------------------->
-set fp1 [open "325541514.part1" w]     ;# opening the file for writing (delite previos file).
-expr { srand(325541514) }               ;# seed the pseudo-random generator with my id.
+set id 325541514
+set fp1 [open "$id.part1" w]     ;# opening the file for writing (delite previos file).
+expr { srand($id) }               ;# seed the pseudo-random generator with my id.
 set N [expr {int(rand()*11+10)}]          ;# chosing the random number to repet the prosess.
 #
 #
 #
-puts $fp1 "# EX_1 emily benyaminov 325541514"
-puts $fp1 "# EX_1 shevah cohen 330667064"
+puts $fp1 "# EX_1 Emily Benyaminov 325541514"
+puts $fp1 "# EX_1 Shevah Cohen 330667064"
 
 puts $fp1 "Number of runs: N = $N"
 
@@ -20,13 +21,13 @@ while {$i <$N}  {
     set sum 0
     puts $fp1 "M = $M"
     while {$j <$M}  {
-        set val [expr { int(rand() * (325541514 + 1)) }]
+        set val [expr { int(rand() * ($id + 1)) }]
         puts $fp1 $val
         set sum [expr { $sum + $val }]
         incr j
     }
     set average [expr {double($sum)/$M}]
-    puts $fp1 "Average = $average"
+    puts $fp1 "Average = [format "%.1f" $average]"
     incr i
 }
 close $fp1
@@ -37,8 +38,8 @@ close $fp1
 #****************************************
 #second part, (also known as part B.2)
 # <------------------------------------->
-set fp1 [open "325541514.part1" r]
-set fp2 [open "325541514.part2" w]
+set fp1 [open "$id.part1" r]
+set fp2 [open "$id.part2" w]
 set max_num -1
 while { [gets $fp1 line] >= 0 } { 
     regexp {Number of runs:\s+N\s+=\s+(\d+)} $line match new_N
@@ -55,8 +56,8 @@ if {[string is integer -strict [string trim $line]]} {
         set max_num -1
     }
 }
-puts $fp2 "# EX_1 emily benyaminov 325541514"
-puts $fp2 "# EX_1 shevah cohen 330667064"
+puts $fp2 "# EX_1 Emily Benyaminov 325541514"
+puts $fp2 "# EX_1 Shevah Cohen 330667064"
 puts $fp2 [format "%-15s%-15s%s" "Run Number" "Average" "Maximum"]
 puts $fp2 [format "%-15s%-15s%s" "------------" "-------" "-------"]
 foreach avg_num [lsort -real [array names avg_list]] {
