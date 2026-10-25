@@ -28,7 +28,7 @@ set N 15
 expr {srand($my_id)}
 
 set fh_1_w [open "$my_id.part1" w] ;# Create/open the file for part 1
-puts $fh_1_w "# EX_1 Roei Groner $my_id\nNumber of runs: N = $N"
+puts $fh_1_w "# EX_1 Roei Groner $my_id, Eleonor Sahakian 318801529\nNumber of runs: N = $N"
 
 # Run the loop
 for {set i 1} {$i <= $N} {incr i} {
@@ -65,7 +65,7 @@ set sorted_avgs [lsort -real [array names averages]]
 
 # Create/open the file for part 2, and write the header lines
 set fh_2 [open "$my_id.part2" w]
-puts $fh_2 "# EX_1 Roei Groner $my_id"
+puts $fh_2 "# EX_1 Roei Groner $my_id, Eleonor Sahakian 318801529"
 puts $fh_2 [format "%-12s  %-12s  %-7s" "Run Number" "Average" "Maximum"]
 puts $fh_2 "------------  -------       -------"
 
