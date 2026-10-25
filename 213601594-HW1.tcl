@@ -18,7 +18,7 @@ puts $fh "Number of runs: N = $N"
 for {set run 1} {$run <= $N} {incr run} {
 
     puts $fh "Run Number: $run"
-    puts $fh "------------"
+    puts $fh "-------------"
 
     set M [expr {int(rand() * 26) + 5}]
     puts $fh "M = $M"
@@ -65,8 +65,8 @@ set sortedResults [lsort -real -index 1 $results]
 set outputFile [open "$ID.part2" w]
 
 puts $outputFile "# EX_1 RAZI ZOABI 213601594 Yosef Shekh Yosef 322673591"
-puts $outputFile [format "%-14s%-14s%s" "Run Number" "Average" "Maximum"]
-puts $outputFile [format "%-14s%-14s%s" "----------" "-------" "-------"]
+puts $outputFile "Run Number    Average       Maximum"
+puts $outputFile "------------  -------       -------"
 foreach result $sortedResults {
     set runNumber [lindex $result 0]
     set average [lindex $result 1]
