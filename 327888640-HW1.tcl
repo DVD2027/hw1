@@ -5,7 +5,7 @@ set fileId [open $filename1 w]
 
 expr { srand(327888640) }
 
-puts $fileId "# EX_1 Gil Rozen 327888640"
+puts $fileId "# EX_1 Gil Rozen 327888640 Dvir Gamliel 321427544"
 
 set N [expr {int(rand() * 11) + 10}]
 puts $fileId "Number of runs: N = $N"
