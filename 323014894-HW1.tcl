@@ -35,7 +35,7 @@ for {set i 1} {$i <= $N} {incr i} {
     }
 
     # חישוב הממוצע לריצה הנוכחית
-    set avg [expr {$sum / $M}]
+    set avg [format "%.1f" [expr {$sum / $M}]]
     puts $fh1 "Average = $avg"
     
     # הדפסת שורה ריקה בין ריצה לריצה (כמו בדוגמה)
