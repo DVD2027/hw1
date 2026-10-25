@@ -46,7 +46,7 @@ while {[gets $fh line] >= 0} {
     }
 }
 close $fh
-set sorted_runs [lsort -integer -decreasing -index 0 $list_runs]
+set sorted_runs [lsort -real -index 1 $list_runs]
 set out [open "214439606.part2" w]
 puts $out "# EX_1 Yoav Barel 214439606"
 puts $out [format "%-14s%-14s%s" "Run Number" "Average" "Maximum"]
