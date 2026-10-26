@@ -1,5 +1,5 @@
 #HW1- Digital VLSI Design
-#EX_1 - Rotem Golov 207704149 & Orel Cohen
+#EX_1 - Rotem Golov 207704149 & Orel Cohen 318733219
 
 set my_id 207704149
 
@@ -7,7 +7,7 @@ set my_id 207704149
 set file_id [open "207704149.part1" w]
 
 # Writes the header
-puts $file_id "# EX_1 Rotem Golov $my_id"
+puts $file_id "# EX_1 Rotem Golov $my_id & Orel Cohen 318733219"
 
 # Initialize random number generation
 expr { srand($my_id) }
