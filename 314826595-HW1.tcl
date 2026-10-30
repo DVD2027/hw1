@@ -1,49 +1,50 @@
-# הגדרת משתנים
+# define var
 set id 314826595
 set file_part1 "${id}.part1"
 
-# אתחול מחולל המספרים האקראיים (Seed) עם תעודת הזהות
+# initialize the random number generator seed with the id for reproducible results
+# every srand/rand command from this point onwards will be a modulo of the seed
 expr { srand($id) }
 
-# פתיחת קובץ הפלט הראשון לכתיבה
+# generate a new file with the exact name requested by the assignment
 set fh1 [open $file_part1 w]
 
-# כותרת
-puts $fh1 "# EX_1 Idan Safadi 314826595 Bar zehavi 323014894"
+# the first line in the file - also defined through the readme
+puts $fh1 "# EX_1 Idan Safadi 314826595 Bar zahavi 323014894"
 
-# הגרלת מספר הריצות N (טווח 10 עד 20)
+# generate a random number between 10-20 the int helps us round up the number the rand will eval at [0,1) meaning we exist within the bounds
 set N [expr { int(rand() * 11) + 10 }]
 puts $fh1 "Number of runs: N = $N"
 
-# לולאת הריצות
 for {set i 1} {$i <= $N} {incr i} {
     puts $fh1 "Run Number: $i"
     puts $fh1 "-------------"
 
-    # הגרלת M עבור הריצה הנוכחית (טווח 5 עד 30)
+    #same as N generation but between 5-30 as requested
     set M [expr { int(rand() * 26) + 5 }]
     puts $fh1 "M = $M"
 
-    # שימוש ב-0.0 כדי להבטיח חישוב בשברים עשרוניים ולא בשלמים
+    #init sum to a floating point number so that the final avg will display as intended
     set sum 0.0
 
-    # הגרלת M מספרים בטווח של 0 עד תעודת הזהות
+    # generating the random number using the predictable seed for the randum values that will be used for our avg using sum to accumulate the results
     for {set j 0} {$j < $M} {incr j} {
         set rand_val [expr { int(rand() * ($id + 1)) }]
         puts $fh1 $rand_val
         set sum [expr {$sum + $rand_val}]
     }
 
-    # חישוב הממוצע לריצה הנוכחית
+    # calculating the avg and using the currect formating
     set avg [format "%.1f" [expr {$sum / $M}]]
     puts $fh1 "Average = $avg"
     
-    # הדפסת שורה ריקה בין ריצה לריצה (כמו בדוגמה)
+    # filing an empty line to adhere to the format presented in the assignment
     puts $fh1 ""
 }
 
-# סגירת הקובץ
+# closing the file in order to commit the changes
 close $fh1
+#for our validation
 puts "Part 1 completed! File $file_part1 was generated."
 
 # ==========================================
@@ -52,40 +53,47 @@ puts "Part 1 completed! File $file_part1 was generated."
 
 set file_part2 "${id}.part2"
 
-# פתיחת הקובץ הראשון לקריאה
+# in order for us to parse the file we need to open it on read
 set fh1 [open $file_part1 r]
 
 
 
-# רשימה לשמירת הנתונים של כל ריצה
+# this list saves all of the runs history
 set runs_list {}
 
 set current_run ""
 set current_max -1
 set reading_numbers 0
 
-# קריאת הקובץ שורה אחר שורה
+# reading the file line by line
 while { [gets $fh1 line] >= 0 } {
-    # הסרת רווחים מהצדדים
+    # trims spaces
     set line [string trim $line]
     
-    # דילוג על שורות ריקות
+    #ignore empty lines
     if { $line == "" } continue
     
-    # שימוש בביטויים רגולריים (Regex) לאיתור הנתונים
+    #regexp validates the existance of a pattern in a string
+    #when using ^ we force the check to start from the first character
+    #we use \s* to ignore spaces in the line
+    #use () to save the argument for the second part of regex
+    #the anotation of \d+ checks for the digit or in our case the run number for the input
+    #we save the whole matching substring in match and the value stored in () in run_number
+    #therefore we only enter the first initilizing if if we match a new run
     if { [regexp {^Run Number:\s*(\d+)} $line match run_num] } {
         set current_run $run_num
         set current_max -1
         set reading_numbers 0
     } elseif { [regexp {^M\s*=\s*\d+} $line] } {
-        # משורה זו מתחילים המספרים המוגרלים
+        #from this point onwards we get our random generated numbers
         set reading_numbers 1
     } elseif { [regexp {^Average\s*=\s*([0-9.]+)} $line match avg] } {
-        # שורת הממוצע מסמנת את סוף הריצה. נשמור את הנתונים כרשימה פנימית
+        # now we'll save all of the arguments we will need for the output
         lappend runs_list [list $current_run $avg $current_max]
+	#we know from the files format that here we need to stop finding the maximum for the current run (this is the last line)
         set reading_numbers 0
     } elseif { $reading_numbers == 1 } {
-        # קריאת המספרים האקראיים עצמם ומציאת המקסימום
+        # finding the maximum
         if { $line > $current_max } {
             set current_max $line
         }
@@ -93,19 +101,19 @@ while { [gets $fh1 line] >= 0 } {
 }
 close $fh1
 
-# מיון הרשימה לפי עמודת הממוצע (אינדקס 1) בסדר עולה
+#here we use lsort where the index that interests us is 1 because we stored the avg there and save the output into the sorted_runs var
 set sorted_runs [lsort -real -index 1 $runs_list]
 
-# פתיחת קובץ הפלט השני לכתיבה
+# create the new file for the second part
 set fh2 [open $file_part2 w]
 
-# כתיבת הכותרות בדיוק בפורמט הנדרש (כולל שימוש ב-format ליישור העמודות)
+#format helps us to adhere to the format presented in the exercize
 
-puts $fh1 "# EX_1 Idan Safadi 314826595 Bar zehavi 323014894"
+puts $fh2 "# EX_1 Idan Safadi 314826595 Bar zahavi 323014894"
 puts $fh2 [format "%-14s%-14s%s" "Run Number" "Average" "Maximum"]
 puts $fh2 [format "%-14s%-14s%s" "------------" "-------" "-------"]
 
-# הדפסת הנתונים הממוינים לקובץ החדש
+#printing the sorted itemized list
 foreach item $sorted_runs {
     set r [lindex $item 0]
     set a [lindex $item 1]
